@@ -1,40 +1,36 @@
 
-include <iostream>
+    
+#include <iostream>
 using namespace std;
 struct process
 {
-int pid;  int bt;   int wt;  int tt; int prior;
+int pid;  int bt;   int wt;  int tt;
 } p[10],temp;
 
 int main() {
 int i,j,n, totwt, tottt;
 float avg1,avg2;
+//clrscr();
 cout<<"\nEnter the number of process:\t";
-cin>>n;
+//cin>>n;
+n=4;
 for(i=1;i<=n;i++)
 {
 p[i].pid=i;
 cout<<"\nEnter the burst time:\t";
 cin>>p[i].bt;
-cout<<"\nEnter the priority:\t";
-cin>>p[i].prior;
 }
 for(i=1;i<n;i++){
 for(j=i+1;j<=n;j++)
 {
-if(p[i].bt>p[j].prior)
+if(p[i].bt>p[j].bt)
 {
 temp.pid=p[i].pid;
 p[i].pid=p[j].pid;
 p[j].pid=temp.pid;
-
 temp.bt=p[i].bt;
 p[i].bt=p[j].bt;
 p[j].bt=temp.bt;
-
-temp.prior=p[i].prior;
-p[i].prior=p[j].prior;
-p[j].prior=temp.prior;
 }
 }
 }
@@ -58,5 +54,6 @@ i++;
 avg1=totwt/n;
 avg2=tottt/n;
 cout<<"\nAVG1="<<avg1<<"\tAVG2="<<avg2;
+//getch();
 return 0; 
     
